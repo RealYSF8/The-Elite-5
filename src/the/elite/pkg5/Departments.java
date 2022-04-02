@@ -37,13 +37,9 @@ public class Departments extends javax.swing.JFrame {
 
         jLabel1.setText("Create New Department");
 
-        jTextField1.setText("jTextField1");
-
-        jTextField2.setText("jTextField2");
-
         jLabel2.setText("Department Name:");
 
-        jLabel3.setText("Deoartment_ID:");
+        jLabel3.setText("Department_ID:");
 
         jButton1.setText("Create");
 
