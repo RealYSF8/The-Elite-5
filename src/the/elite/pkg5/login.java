@@ -205,40 +205,29 @@ public class login extends javax.swing.JFrame {
     String username = jTextField1.getText(); 
     String password = jPasswordField1.getText();
       // TODO add your handling code here:
-       try 
-    {
+       try {
         int log = 1;
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project316", "project", "1234");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/office_management_system", "dbuser", "dbpass");
         st = (Statement) conn.createStatement();
-        rs = st.executeQuery("select * from login");
+        rs = st.executeQuery("select Username, Password from users");
         
-        while (rs.next())
-        {
-            if (rs.getString(1).equals(username) && rs.getString(2).equals(password))
-        {
-            log=0;
-            break;
-
-                  
+        while (rs.next()) {
+            if (rs.getString(1).equals(username) && rs.getString(2).equals(password)) {
+                log=0;
+                break; 
+            }
         }
-
+        if (log == 0) {
+            JOptionPane.showMessageDialog(null, "SUCKESS.", "Login System", JOptionPane.ERROR_MESSAGE);
         }
-        if (log == 0)
-  
-        {
-  
-        
-    JOptionPane.showMessageDialog(null, "SUCKESS.", "Login System", JOptionPane.ERROR_MESSAGE);
-
-     }
     
            
     
-    else 
-    JOptionPane.showMessageDialog(null, "You do not have permission or the username or password you entered is invalid.", "Login System", JOptionPane.ERROR_MESSAGE);
-    jTextField1.setText("");
-    jPasswordField1.setText("");
-    jTextField1.grabFocus();
+        else 
+        JOptionPane.showMessageDialog(null, "You do not have permission or the username or password you entered is invalid.", "Login System", JOptionPane.ERROR_MESSAGE);
+        jTextField1.setText("");
+        jPasswordField1.setText("");
+        jTextField1.grabFocus();
     }
     
     catch (SQLException ex) {

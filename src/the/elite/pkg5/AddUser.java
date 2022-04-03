@@ -4,12 +4,17 @@
  */
 package the.elite.pkg5;
 
-/**
- *
- * @author foad farahbod
- */
-public class AddUser extends javax.swing.JFrame {
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 
+public class AddUser extends javax.swing.JFrame {
+    java.sql.Connection conn = null;
+    ResultSet rs = null;
+    Statement st;
     /**
      * Creates new form User
      */
@@ -68,6 +73,24 @@ public class AddUser extends javax.swing.JFrame {
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
             }
         });
 
@@ -187,7 +210,44 @@ public class AddUser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        String Fname = jTextField1.getText(); 
+        String Lname = jTextField2.getText();
+        String Email = jTextField3.getText();
+        String PhoneNum = jTextField4.getText();
+        String Username = jTextField5.getText();
+        String Password = jTextField6.getText();
+        
+        
+        
+        
+        try {
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/office_management_system", "dbuser", "dbpass");
+                st = (Statement) conn.createStatement();
+                String query = "insert into users(Fname, Lname, Email, PhoneNum, Username, Password)values(?,?,?,?,?,?)";
+                PreparedStatement st = conn.prepareStatement(query);
+                st.setString(1, jTextField1.getText());
+                st.setString(2, jTextField2.getText());
+                st.setString(3, jTextField3.getText());
+                st.setString(4, jTextField4.getText());
+                st.setString(5, jTextField5.getText());
+                st.setString(6, jTextField6.getText());
+                
+
+                st.execute();
+                JOptionPane.showMessageDialog(null,"User Successfuly Created");
+
+                login Info = new login();
+                Info.setVisible(true);
+                this.dispose();
+            
+    }
+
+    catch (SQLException e) {
+
+        JOptionPane.showMessageDialog(null,e);
+
+    }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -201,6 +261,18 @@ public class AddUser extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
 
     /**
      * @param args the command line arguments

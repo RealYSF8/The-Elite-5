@@ -6,12 +6,10 @@ package the.elite.pkg5;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 import javax.swing.JOptionPane;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
-import java.util.Scanner;
 
 /**
  *
