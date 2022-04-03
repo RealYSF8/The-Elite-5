@@ -3,6 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package the.elite.pkg5;
+import javax.swing.JOptionPane;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 
 /**
@@ -11,11 +22,13 @@ package the.elite.pkg5;
  */
 public class login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form login
-     */
+   java.sql.Connection conn = null;
+   ResultSet rs = null;
+   Statement st;
+   
     public login() {
-        initComponents();
+         initComponents();
+        this.setResizable(false);
     }
 
     /**
@@ -69,6 +82,11 @@ public class login extends javax.swing.JFrame {
         jLabel4.setText("PASSWORD");
 
         jButton1.setText("LOG IN");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -88,7 +106,6 @@ public class login extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(153, 153, 153));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Smart Dell\\Downloads\\9d208194cbb64ebc828bcf38f673dc3a.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -162,7 +179,7 @@ public class login extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -183,6 +200,54 @@ public class login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    String username = jTextField1.getText(); 
+    String password = jPasswordField1.getText();
+      // TODO add your handling code here:
+       try 
+    {
+        int log = 1;
+        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project316", "project", "1234");
+        st = (Statement) conn.createStatement();
+        rs = st.executeQuery("select * from login");
+        
+        while (rs.next())
+        {
+            if (rs.getString(1).equals(username) && rs.getString(2).equals(password))
+        {
+            log=0;
+            break;
+
+                  
+        }
+
+        }
+        if (log == 0)
+  
+        {
+  
+        
+    JOptionPane.showMessageDialog(null, "SUCKESS.", "Login System", JOptionPane.ERROR_MESSAGE);
+
+     }
+    
+           
+    
+    else 
+    JOptionPane.showMessageDialog(null, "You do not have permission or the username or password you entered is invalid.", "Login System", JOptionPane.ERROR_MESSAGE);
+    jTextField1.setText("");
+    jPasswordField1.setText("");
+    jTextField1.grabFocus();
+    }
+    
+    catch (SQLException ex) {
+    Logger.getLogger (login.class.getName()).log(Level.SEVERE,null,ex);
+   
+   
+    }                                         
+   
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
