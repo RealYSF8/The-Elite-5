@@ -4,6 +4,7 @@
  */
 package the.elite.pkg5;
 
+import java.security.SecureRandom;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -68,7 +69,7 @@ public class AddUser extends javax.swing.JFrame {
 
         jLabel6.setText("Username:");
 
-        jLabel7.setText("Password:");
+        jLabel7.setText("PIN:");
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +95,12 @@ public class AddUser extends javax.swing.JFrame {
             }
         });
 
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
+
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/the/elite/pkg5/save.png"))); // NOI18N
         jButton1.setText("save");
         jButton1.setToolTipText("");
@@ -104,6 +111,11 @@ public class AddUser extends javax.swing.JFrame {
         });
 
         jButton2.setText("Generate");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/the/elite/pkg5/folder.png"))); // NOI18N
         jMenu1.setText("File");
@@ -273,6 +285,24 @@ public class AddUser extends javax.swing.JFrame {
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        SecureRandom rand = new SecureRandom();
+        StringBuilder password = new StringBuilder(10);
+    
+        for (int i = 0; i < 5; i++) {
+            password.append(rand.nextInt(10));
+        }
+        
+        JOptionPane.showMessageDialog(null,"Pin: " + password.toString());
+        jTextField6.setText(password.toString());
+        System.out.println("Password is: " + password);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
 
     /**
      * @param args the command line arguments

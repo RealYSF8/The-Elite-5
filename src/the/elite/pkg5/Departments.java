@@ -170,8 +170,7 @@ public class Departments extends javax.swing.JFrame {
                 login Info = new login();
                 Info.setVisible(true);
                 this.dispose();
-            
-    }
+        }
 
     catch (SQLException e) {
 
