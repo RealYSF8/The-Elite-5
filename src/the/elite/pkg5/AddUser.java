@@ -227,7 +227,7 @@ public class AddUser extends javax.swing.JFrame {
         String Email = jTextField3.getText();
         String PhoneNum = jTextField4.getText();
         String Username = jTextField5.getText();
-        String Password = jTextField6.getText();
+        String Password = jPasswordField1.getText();
         
         
         
@@ -242,7 +242,7 @@ public class AddUser extends javax.swing.JFrame {
                 st.setString(3, jTextField3.getText());
                 st.setString(4, jTextField4.getText());
                 st.setString(5, jTextField5.getText());
-                st.setString(6, jTextField6.getText());
+                st.setString(6, jPasswordField1.getText());
                 
 
                 st.execute();
