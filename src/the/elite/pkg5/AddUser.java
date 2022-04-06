@@ -69,7 +69,7 @@ public class AddUser extends javax.swing.JFrame {
 
         jLabel6.setText("Username:");
 
-        jLabel7.setText("PIN:");
+        jLabel7.setText("Passworrd:");
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
