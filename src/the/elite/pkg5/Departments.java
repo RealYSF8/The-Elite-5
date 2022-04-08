@@ -172,11 +172,9 @@ public class Departments extends javax.swing.JFrame {
                 this.dispose();
         }
 
-    catch (SQLException e) {
-
-        JOptionPane.showMessageDialog(null,e);
-
-    }
+        catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,e);
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
