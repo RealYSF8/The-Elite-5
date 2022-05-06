@@ -351,7 +351,7 @@ public class EmployeePage extends javax.swing.JFrame {
         String Email = jTextField4.getText();       
         String PhoneNum = jTextField5.getText();
         String Username = jTextField6.getText();
-        String Password = jPasswordField1.getText();
+//        String Password = jPasswordField1.getText();
         String roles = jComboBox1.getSelectedItem().toString();
         
         
