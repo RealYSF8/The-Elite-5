@@ -326,7 +326,6 @@ public class EmployeePage extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-        
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -353,7 +352,7 @@ public class EmployeePage extends javax.swing.JFrame {
         String PhoneNum = jTextField5.getText();
         String Username = jTextField6.getText();
         String Password = jPasswordField1.getText();
-        String roles = jComboBox1.getName();
+        String roles = jComboBox1.getSelectedItem().toString();
         
         
         
@@ -371,7 +370,7 @@ public class EmployeePage extends javax.swing.JFrame {
                 st.setString(5, jTextField5.getText());
                 st.setString(6, jTextField6.getText());
                 st.setString(7, jPasswordField1.getText());
-                st.setString(8, jComboBox1.getName());
+                st.setString(8, jComboBox1.getSelectedItem().toString());
                 
 
                 st.execute();
