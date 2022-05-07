@@ -374,7 +374,7 @@ public class EmployeePage extends javax.swing.JFrame {
                 
 
                 st.execute();
-                JOptionPane.showMessageDialog(null,"User Successfuly Created");
+                JOptionPane.showMessageDialog(null,"Employee Successfuly Created");
 
                 login Info = new login();
                 Info.setVisible(true);
