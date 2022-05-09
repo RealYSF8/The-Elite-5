@@ -222,7 +222,7 @@ public class login extends javax.swing.JFrame {
       else{
        try {
         int log = 1;
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/office_management_system", "dbuser", "dbpass");
+                conn = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
         st = (Statement) conn.createStatement();
         rs = st.executeQuery("select Username, Password from users");
         

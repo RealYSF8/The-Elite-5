@@ -157,7 +157,7 @@ public class Departments extends javax.swing.JFrame {
         System.out.println("Dept ID   : " + DepartmentID);
         
         try {
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/office_management_system", "dbuser", "dbpass");
+                conn = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
                 st = (Statement) conn.createStatement();
                 String query = "insert into departments(DepartmentName, DepartmentID)values(?,?)";
                 PreparedStatement st = conn.prepareStatement(query);

@@ -12,6 +12,8 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 
+
+
 public class AddUser extends javax.swing.JFrame {
     java.sql.Connection conn = null;
     ResultSet rs = null;
@@ -19,6 +21,7 @@ public class AddUser extends javax.swing.JFrame {
     /**
      * Creates new form User
      */
+    
     public AddUser() {
         initComponents();
     }
@@ -198,7 +201,7 @@ public class AddUser extends javax.swing.JFrame {
         
         
         try {
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/office_management_system", "dbuser", "dbpass");
+                conn = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
                 st = (Statement) conn.createStatement();
                 String query = "insert into users(Fname, Lname, Email, PhoneNum, Username, Password)values(?,?,?,?,?,?)";
                 PreparedStatement st = conn.prepareStatement(query);
@@ -224,6 +227,7 @@ public class AddUser extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,e);
 
     }
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

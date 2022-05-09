@@ -359,7 +359,7 @@ public class EmployeePage extends javax.swing.JFrame {
         
         
         try {
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/office_management_system", "dbuser", "dbpass");
+                conn = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
                 st = (Statement) conn.createStatement();
                 String query = "insert into emp(Fname, Lname, payroll, Email, PhoneNum, Username, password, Roles)values(?,?,?,?,?,?,?,?)";
                 PreparedStatement st = conn.prepareStatement(query);
