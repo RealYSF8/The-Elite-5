@@ -233,7 +233,7 @@ public class login extends javax.swing.JFrame {
             }
         }
         if (log == 0) {
-            JOptionPane.showMessageDialog(null, "SUCKESS.", "Login System", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "SUCCESS.", "Login System", JOptionPane.ERROR_MESSAGE);
         }
     
            

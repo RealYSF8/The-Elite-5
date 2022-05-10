@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,9 +19,11 @@ import javax.swing.JOptionPane;
  * @author foad farahbod
  */
 public class EmployeePage extends javax.swing.JFrame {
+
     java.sql.Connection conn = null;
     ResultSet rs = null;
     Statement st;
+
     /**
      * Creates new form EmployeePage
      */
@@ -57,6 +61,7 @@ public class EmployeePage extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
@@ -157,6 +162,13 @@ public class EmployeePage extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setText("Remove Employee");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         jMenuBar1.setPreferredSize(new java.awt.Dimension(70, 35));
 
         jMenu1.setText("File");
@@ -233,28 +245,31 @@ public class EmployeePage extends javax.swing.JFrame {
                                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(22, 22, 22)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTextField1)
                                             .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                            .addComponent(jTextField4))))
                                 .addGap(35, 35, 35)
                                 .addComponent(jLabel5)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jPasswordField1))
-                            .addComponent(jButton2))
-                        .addGap(76, 76, 76))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton2)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                            .addComponent(jPasswordField1)
+                            .addComponent(jTextField3))
+                        .addGap(34, 34, 34))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(81, 81, 81)
                         .addComponent(jButton3)
-                        .addGap(82, 82, 82))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton4)
+                .addGap(38, 38, 38))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,7 +324,8 @@ public class EmployeePage extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
-                            .addComponent(jButton3))
+                            .addComponent(jButton3)
+                            .addComponent(jButton4))
                         .addGap(40, 40, 40))))
         );
 
@@ -341,52 +357,45 @@ public class EmployeePage extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-         // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        String Fname = jTextField1.getText(); 
+        String Fname = jTextField1.getText();
         String Lname = jTextField2.getText();
         String Payroll = jTextField3.getText();
-        String Email = jTextField4.getText();       
+        String Email = jTextField4.getText();
         String PhoneNum = jTextField5.getText();
         String Username = jTextField6.getText();
         String Password = jPasswordField1.getText();
         String roles = jComboBox1.getSelectedItem().toString();
-        
-        
-        
-        
-        
+
         try {
-                conn = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
-                st = (Statement) conn.createStatement();
-                String query = "insert into emp(Fname, Lname, payroll, Email, PhoneNum, Username, password, Roles)values(?,?,?,?,?,?,?,?)";
-                PreparedStatement st = conn.prepareStatement(query);
-                st.setString(1, jTextField1.getText());
-                st.setString(2, jTextField2.getText());
-                st.setString(3, jTextField3.getText());
-                st.setString(4, jTextField4.getText());
-                st.setString(5, jTextField5.getText());
-                st.setString(6, jTextField6.getText());
-                st.setString(7, jPasswordField1.getText());
-                st.setString(8, jComboBox1.getSelectedItem().toString());
-                
+            conn = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
+            st = (Statement) conn.createStatement();
+            String query = "insert into emp(Fname, Lname, payroll, Email, PhoneNum, Username, password, Roles)values(?,?,?,?,?,?,?,?)";
+            PreparedStatement st = conn.prepareStatement(query);
+            st.setString(1, jTextField1.getText());
+            st.setString(2, jTextField2.getText());
+            st.setString(3, jTextField3.getText());
+            st.setString(4, jTextField4.getText());
+            st.setString(5, jTextField5.getText());
+            st.setString(6, jTextField6.getText());
+            st.setString(7, jPasswordField1.getText());
+            st.setString(8, jComboBox1.getSelectedItem().toString());
 
-                st.execute();
-                JOptionPane.showMessageDialog(null,"Employee Successfuly Created");
+            st.execute();
+            JOptionPane.showMessageDialog(null, "Employee Successfuly Created");
 
-                login Info = new login();
-                Info.setVisible(true);
-                this.dispose();
-            
-    }
+            login Info = new login();
+            Info.setVisible(true);
+            this.dispose();
 
-    catch (SQLException e) {
+        } catch (SQLException e) {
 
-        JOptionPane.showMessageDialog(null,e);
+            JOptionPane.showMessageDialog(null, e);
 
-    }
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -409,15 +418,55 @@ public class EmployeePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         SecureRandom rand = new SecureRandom();
         StringBuilder password = new StringBuilder(10);
-    
+
         for (int i = 0; i < 5; i++) {
             password.append(rand.nextInt(10));
         }
-        
-        JOptionPane.showMessageDialog(null,"Pin: " + password.toString());
+
+        JOptionPane.showMessageDialog(null, "Pin: " + password.toString());
         jPasswordField1.setText(password.toString());
         System.out.println("Password is: " + password);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+        String Username = jTextField6.getText();
+      try{
+      conn = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
+        st = (Statement) conn.createStatement();
+        rs = st.executeQuery("select Username from users");
+        int log =1;
+        while (rs.next()) {
+            if (rs.getString(1).equals(Username)) {
+                log=0;
+                break; 
+            }
+        }
+         if (log == 0) {
+           try {
+            conn = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
+            st = (Statement) conn.createStatement();
+            String query = "delete from users " + "where (Username ='" + Username + "')";
+            PreparedStatement st = conn.prepareStatement(query);
+
+            st.execute();
+            JOptionPane.showMessageDialog(null, "User Successfuly Removed");
+            this.dispose();
+
+        } catch (SQLException e) {
+
+            JOptionPane.showMessageDialog(null, "Invalid Username");
+        } 
+        }
+          else 
+        JOptionPane.showMessageDialog(null, "Invalid Username", "Login System", JOptionPane.ERROR_MESSAGE);
+        jTextField6.setText("");
+      }catch(SQLException ex){
+          Logger.getLogger (EmployeePage.class.getName()).log(Level.SEVERE,null,ex);
+      }
+
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -458,6 +507,7 @@ public class EmployeePage extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
