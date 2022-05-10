@@ -72,10 +72,20 @@ public class MainPage extends javax.swing.JFrame {
 
         jRadioButtonMenuItem3.setSelected(true);
         jRadioButtonMenuItem3.setText("Add Department");
+        jRadioButtonMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jRadioButtonMenuItem3);
 
         jRadioButtonMenuItem4.setSelected(true);
         jRadioButtonMenuItem4.setText("Log Out");
+        jRadioButtonMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jRadioButtonMenuItem4);
 
         jMenuBar1.add(jMenu1);
@@ -103,15 +113,32 @@ public class MainPage extends javax.swing.JFrame {
 
     private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
         // TODO add your handling code here:
+        EmployeePage Info = new EmployeePage();
+        Info.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
 
     private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
-        // TODO add your handling code here:
+        AddUser Info = new AddUser();
+        Info.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jRadioButtonMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem3ActionPerformed
+        Departments Info = new Departments();
+        Info.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jRadioButtonMenuItem3ActionPerformed
+
+    private void jRadioButtonMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem4ActionPerformed
+        login Info = new login();
+        Info.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jRadioButtonMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
