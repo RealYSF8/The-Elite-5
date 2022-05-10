@@ -216,6 +216,7 @@ public class login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     String username = jTextField1.getText(); 
     String password = jPasswordField1.getText();
+    
       if (username.equals("")||password.equals("")){
             JOptionPane.showMessageDialog(null, "Enter Your Username and Password");
       }
@@ -224,17 +225,33 @@ public class login extends javax.swing.JFrame {
         int log = 1;
                 conn = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
         st = (Statement) conn.createStatement();
-        rs = st.executeQuery("select Username, Password from users");
+        rs = st.executeQuery("select Username, Password, Roles from emp");
         
-        while (rs.next()) {
-            if (rs.getString(1).equals(username) && rs.getString(2).equals(password)) {
-                log=0;
-                break; 
-            }
+        while (rs.next())
+        {
+            if (rs.getString(1).equals(username) && rs.getString(2).equals(password) )
+        {
+            log=0;
+            break;
+                    
         }
-        if (log == 0) {
-            JOptionPane.showMessageDialog(null, "SUCCESS.", "Login System", JOptionPane.ERROR_MESSAGE);
         }
+        if (log == 0)
+  
+        {
+  
+        
+       if (rs.getString(3).equals("Admin")) {
+       MainPage Info = new MainPage();
+        Info.setVisible(true);
+        this.dispose();
+       }  else   { 
+        AddUser Info = new AddUser();
+        Info.setVisible(true);
+        this.dispose();
+               
+       }
+     }
     
            
     
