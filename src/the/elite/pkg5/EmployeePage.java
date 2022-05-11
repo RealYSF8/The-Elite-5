@@ -441,6 +441,9 @@ public class EmployeePage extends javax.swing.JFrame {
                 log=0;
                 break; 
             }
+            else if(Username.equals("")){
+                JOptionPane.showMessageDialog(null, "Enter a valid Username");
+                break;}
         }
          if (log == 0) {
            try {
@@ -451,16 +454,15 @@ public class EmployeePage extends javax.swing.JFrame {
 
             st.execute();
             JOptionPane.showMessageDialog(null, "User Successfuly Removed");
-            this.dispose();
-
         } catch (SQLException e) {
 
             JOptionPane.showMessageDialog(null, "Invalid Username");
         } 
         }
-          else 
-        JOptionPane.showMessageDialog(null, "Invalid Username", "Login System", JOptionPane.ERROR_MESSAGE);
+           else 
+        JOptionPane.showMessageDialog(null, "Invalid Username", "Remove Employee", JOptionPane.ERROR_MESSAGE);
         jTextField6.setText("");
+        
       }catch(SQLException ex){
           Logger.getLogger (EmployeePage.class.getName()).log(Level.SEVERE,null,ex);
       }
