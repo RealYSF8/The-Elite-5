@@ -145,8 +145,8 @@ public class Departments extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        AddUser info = new AddUser();
-        info.setVisible(true);
+        MainPage Info = new MainPage();
+        Info.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -166,10 +166,6 @@ public class Departments extends javax.swing.JFrame {
 
                 st.execute();
                 JOptionPane.showMessageDialog(null,"Depoartment Successfuly Created");
-
-                login Info = new login();
-                Info.setVisible(true);
-                this.dispose();
         }
 
         catch (SQLException e) {
