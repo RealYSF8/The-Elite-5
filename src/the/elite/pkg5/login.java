@@ -3,13 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package the.elite.pkg5;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import javax.swing.JOptionPane;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+
 
 
 
@@ -18,7 +24,8 @@ import java.util.logging.Logger;
  * @author Smart Dell
  */
 public class login extends javax.swing.JFrame {
-
+   static final String secretKey="d64dm54647godz";
+   static  SecretKeyFactory secretfac;
    java.sql.Connection conn = null;
    ResultSet rs = null;
    Statement st;
@@ -216,6 +223,12 @@ public class login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     String username = jTextField1.getText(); 
     String password = jPasswordField1.getText();
+       try {
+           secretfac = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
+       } catch (NoSuchAlgorithmException ex) {
+           Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        var currentpassword = encrypt(password, secretfac);
     
       if (username.equals("")||password.equals("")){
             JOptionPane.showMessageDialog(null, "Enter Your Username and Password");
@@ -229,7 +242,7 @@ public class login extends javax.swing.JFrame {
         
         while (rs.next())
         {
-            if (rs.getString(1).equals(username) && rs.getString(2).equals(password) )
+            if (rs.getString(1).equals(username) && rs.getString(2).equals(currentpassword) )
         {
             log=0;
             break;
@@ -306,6 +319,19 @@ public class login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> {
             new login().setVisible(true);
         });
+    }
+         public static String encrypt(String plainText, SecretKeyFactory factory){
+           PBEKeySpec spec = new PBEKeySpec(plainText.toCharArray(), secretKey.getBytes(), 65536, 128);
+        try {
+            var password = factory.generateSecret(spec).getEncoded();
+           return Base64.getEncoder().encodeToString(password);
+
+        } catch (InvalidKeySpecException ex) {
+            Logger.getLogger(NewClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null; 
+          
+           
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

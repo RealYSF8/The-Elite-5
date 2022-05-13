@@ -4,6 +4,7 @@
  */
 package the.elite.pkg5;
 
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,13 +14,23 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.security.spec.InvalidKeySpecException;
+import java.util.Base64;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 
 /**
  *
  * @author foad farahbod
  */
 public class EmployeePage extends javax.swing.JFrame {
-
+   static final String secretKey="d64dm54647godz";
+   static  SecretKeyFactory secretfac;
     java.sql.Connection conn = null;
     ResultSet rs = null;
     Statement st;
@@ -371,6 +382,12 @@ public class EmployeePage extends javax.swing.JFrame {
         String Username = jTextField6.getText();
         String Password = jPasswordField1.getText();
         String roles = jComboBox1.getSelectedItem().toString();
+       try {
+           secretfac = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
+       } catch (NoSuchAlgorithmException ex) {
+           Logger.getLogger(EmployeePage.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        var currentpassword = encrypt(jPasswordField1.getText(), secretfac);
 
         try {
             conn = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
@@ -383,7 +400,7 @@ public class EmployeePage extends javax.swing.JFrame {
             st.setString(4, jTextField4.getText());
             st.setString(5, jTextField5.getText());
             st.setString(6, jTextField6.getText());
-            st.setString(7, jPasswordField1.getText());
+            st.setString(7, currentpassword);
             st.setString(8, jComboBox1.getSelectedItem().toString());
 
             st.execute();
@@ -501,6 +518,19 @@ public class EmployeePage extends javax.swing.JFrame {
                 new EmployeePage().setVisible(true);
             }
         });
+    }
+         public static String encrypt(String plainText, SecretKeyFactory factory){
+           PBEKeySpec spec = new PBEKeySpec(plainText.toCharArray(), secretKey.getBytes(), 65536, 128);
+        try {
+            var password = factory.generateSecret(spec).getEncoded();
+           return Base64.getEncoder().encodeToString(password);
+
+        } catch (InvalidKeySpecException ex) {
+            Logger.getLogger(NewClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null; 
+          
+           
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
