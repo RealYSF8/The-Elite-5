@@ -434,16 +434,7 @@ public class EmployeePage extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        SecureRandom rand = new SecureRandom();
-        StringBuilder password = new StringBuilder(10);
 
-        for (int i = 0; i < 5; i++) {
-            password.append(rand.nextInt(10));
-        }
-
-        JOptionPane.showMessageDialog(null, "Pin: " + password.toString());
-        jPasswordField1.setText(password.toString());
-        System.out.println("Password is: " + password);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

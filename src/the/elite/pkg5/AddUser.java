@@ -12,9 +12,23 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import javax.swing.JOptionPane;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Base64;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 
 
 public class AddUser extends javax.swing.JFrame {
+    static final String secretKey = "d64dm54647godz";
+    static SecretKeyFactory secretfac;
     java.sql.Connection conn = null;
     ResultSet rs = null;
     Statement st;
@@ -210,11 +224,16 @@ public class AddUser extends javax.swing.JFrame {
         String Email = jTextField3.getText();
         String PhoneNum = jTextField4.getText();
         String Username = jTextField5.getText();
-        String Password = jPasswordField1.getText();
+        String password = jPasswordField1.getText();
         
-        
-        
-        
+       try {
+           secretfac = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
+       } catch (NoSuchAlgorithmException ex) {
+           Logger.getLogger(EmployeePage.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        var currentpassword = encrypt(jPasswordField1.getText(), secretfac);
+
+    
         try {
                 conn = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
                 st = (Statement) conn.createStatement();
@@ -241,7 +260,8 @@ public class AddUser extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
+        
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
@@ -316,6 +336,18 @@ public class AddUser extends javax.swing.JFrame {
                 new AddUser().setVisible(true);
             }
         });
+    }
+        public static String encrypt(String plainText, SecretKeyFactory factory) {
+        PBEKeySpec spec = new PBEKeySpec(plainText.toCharArray(), secretKey.getBytes(), 65536, 128);
+        try {
+            var password = factory.generateSecret(spec).getEncoded();
+            return Base64.getEncoder().encodeToString(password);
+
+        } catch (InvalidKeySpecException ex) {
+            Logger.getLogger(NewClass.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
