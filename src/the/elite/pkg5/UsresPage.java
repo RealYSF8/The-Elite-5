@@ -84,15 +84,6 @@ public class UsresPage extends javax.swing.JFrame {
 
         DATE.setText("Date:");
 
-        namefield.setText("jTextField1");
-
-        surnamefield.setText("jTextField2");
-
-        emailfield.setText("jTextField3");
-
-        phonenumfield.setText("jTextField4");
-
-        datefield.setText("jTextField5");
         datefield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 datefieldActionPerformed(evt);
@@ -100,8 +91,6 @@ public class UsresPage extends javax.swing.JFrame {
         });
 
         TIME.setText("Time:");
-
-        timefield.setText("jTextField6");
 
         jToggleButton1.setText("BOOK APPOINTMENT");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {

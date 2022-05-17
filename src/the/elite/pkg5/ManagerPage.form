@@ -205,14 +205,8 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField2"/>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>
@@ -277,14 +271,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="app_idfield">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField3"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="appschedulefield">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField4"/>
-          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="appschedulefieldActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -329,9 +320,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="totalcostfiels">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField3"/>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>

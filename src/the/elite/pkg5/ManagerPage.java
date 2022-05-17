@@ -84,10 +84,6 @@ public class ManagerPage extends javax.swing.JFrame {
 
         EDITPAYROLLFIELD.setText("Edit Payroll:");
 
-        jTextField1.setText("jTextField1");
-
-        jTextField2.setText("jTextField2");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -125,9 +121,11 @@ public class ManagerPage extends javax.swing.JFrame {
 
         Appointment_id.setText("Appointment ID:");
 
-        app_idfield.setText("jTextField3");
-
-        appschedulefield.setText("jTextField4");
+        appschedulefield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                appschedulefieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -164,8 +162,6 @@ public class ManagerPage extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         editcost.setText("Total Costs:");
-
-        totalcostfiels.setText("jTextField3");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -242,6 +238,10 @@ public class ManagerPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void appschedulefieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appschedulefieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_appschedulefieldActionPerformed
 
     /**
      * @param args the command line arguments
