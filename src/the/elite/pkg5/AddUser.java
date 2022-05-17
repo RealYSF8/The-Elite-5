@@ -244,7 +244,7 @@ public class AddUser extends javax.swing.JFrame {
                 st.setString(3, jTextField3.getText());
                 st.setString(4, jTextField4.getText());
                 st.setString(5, jTextField5.getText());
-                st.setString(6, jPasswordField1.getText());
+                st.setString(6, currentpassword);
                 
 
                 st.execute();
