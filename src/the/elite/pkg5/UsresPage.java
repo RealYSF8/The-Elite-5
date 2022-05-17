@@ -41,6 +41,7 @@ public class UsresPage extends javax.swing.JFrame {
         TIME = new javax.swing.JLabel();
         timefield = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
+        CONTACTINFO = new javax.swing.JToggleButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
@@ -104,6 +105,8 @@ public class UsresPage extends javax.swing.JFrame {
             }
         });
 
+        CONTACTINFO.setText("CONTACT INFORMATION");
+
         jMenuBar1.setPreferredSize(new java.awt.Dimension(70, 33));
 
         jMenu1.setText("File");
@@ -142,7 +145,12 @@ public class UsresPage extends javax.swing.JFrame {
                             .addComponent(namefield, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(surnamefield, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(emailfield, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(phonenumfield, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(phonenumfield, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jToggleButton1)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(69, 69, 69)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -154,9 +162,9 @@ public class UsresPage extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(datefield, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(jToggleButton1)))
-                .addContainerGap(89, Short.MAX_VALUE))
+                        .addGap(44, 44, 44)
+                        .addComponent(CONTACTINFO)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,7 +202,9 @@ public class UsresPage extends javax.swing.JFrame {
                     .addComponent(Phonenum)
                     .addComponent(phonenumfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
-                .addComponent(jToggleButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jToggleButton1)
+                    .addComponent(CONTACTINFO))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
@@ -241,6 +251,7 @@ public class UsresPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton CONTACTINFO;
     private javax.swing.JLabel DATE;
     private javax.swing.JLabel Email;
     private javax.swing.JLabel Name;
