@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package the.elite.pkg5;
+
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import javax.swing.JOptionPane;
@@ -16,22 +17,20 @@ import java.util.logging.Logger;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
-
-
-
 /**
  *
  * @author Smart Dell
  */
 public class login extends javax.swing.JFrame {
-   static final String secretKey="d64dm54647godz";
-   static  SecretKeyFactory secretfac;
-   java.sql.Connection conn = null;
-   ResultSet rs = null;
-   Statement st;
-   
+
+    static final String secretKey = "d64dm54647godz";
+    static SecretKeyFactory secretfac;
+    java.sql.Connection conn = null;
+    ResultSet rs = null;
+    Statement st;
+
     public login() {
-         initComponents();
+        initComponents();
         this.setResizable(false);
     }
 
@@ -221,70 +220,77 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    String username = jTextField1.getText(); 
-    String password = jPasswordField1.getText();
-       try {
-           secretfac = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
-       } catch (NoSuchAlgorithmException ex) {
-           Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-       }
+        String username = jTextField1.getText();
+        String password = jPasswordField1.getText();
+        try {
+            secretfac = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        }
         var currentpassword = encrypt(password, secretfac);
-    
-      if (username.equals("")||password.equals("")){
+
+        if (username.equals("") || password.equals("")) {
             JOptionPane.showMessageDialog(null, "Enter Your Username and Password");
-      }
-      else{
-       try {
-        int log = 1;
+        } else {
+            try {
+                int log = 1;
                 conn = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
-        st = (Statement) conn.createStatement();
-        rs = st.executeQuery("select Username, Password, Roles from emp");
-        
-        while (rs.next())
-        {
-            if (rs.getString(1).equals(username) && rs.getString(2).equals(currentpassword) )
-        {
-            log=0;
-            break;
-                    
+                st = (Statement) conn.createStatement();
+                rs = st.executeQuery("select Username, Password, Roles from emp");
+
+                while (rs.next()) {
+                    if (rs.getString(1).equals(username) && rs.getString(2).equals(currentpassword)) {
+                        log = 0;
+                        break;
+
+                    }
+                }
+                if (log == 0) {
+
+                    if (rs.getString(3).equals("Admin")) {
+                        MainPage Info = new MainPage();
+                        Info.setVisible(true);
+                        this.dispose();
+                    } else if (rs.getString(3).equals("Manager")) {
+                        ManagerPage Info = new ManagerPage();
+                        Info.setVisible(true);
+                        this.dispose();
+                    } else if (rs.getString(3).equals("Accountant")) {
+                        AccountantPage Info = new AccountantPage();
+                        Info.setVisible(true);
+                        this.dispose();
+                    } else if (rs.getString(3).equals("Marketer")) {
+                        MarketerPage Info = new MarketerPage();
+                        Info.setVisible(true);
+                        this.dispose();
+
+                    } else if (rs.getString(3).equals("Secretary")) {
+                        SecretaryPage Info = new SecretaryPage();
+                        Info.setVisible(true);
+                        this.dispose();
+
+                    } else {
+                        UsresPage Info = new UsresPage();
+                        Info.setVisible(true);
+                        this.dispose();
+
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "You do not have permission or the username or password you entered is invalid.", "Login System", JOptionPane.ERROR_MESSAGE);
+                }
+                jTextField1.setText("");
+                jPasswordField1.setText("");
+                jTextField1.grabFocus();
+            } catch (SQLException ex) {
+                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
         }
-        }
-        if (log == 0)
-  
-        {
-  
-        
-       if (rs.getString(3).equals("Admin")) {
-       MainPage Info = new MainPage();
-        Info.setVisible(true);
-        this.dispose();
-       }  else   { 
-        AddUser Info = new AddUser();
-        Info.setVisible(true);
-        this.dispose();
-               
-       }
-     }
-    
-           
-    
-        else 
-        JOptionPane.showMessageDialog(null, "You do not have permission or the username or password you entered is invalid.", "Login System", JOptionPane.ERROR_MESSAGE);
-        jTextField1.setText("");
-        jPasswordField1.setText("");
-        jTextField1.grabFocus();
-    }
-    
-    catch (SQLException ex) {
-    Logger.getLogger (login.class.getName()).log(Level.SEVERE,null,ex);
-   
-    }
-    }                                         
-   
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -320,18 +326,18 @@ public class login extends javax.swing.JFrame {
             new login().setVisible(true);
         });
     }
-         public static String encrypt(String plainText, SecretKeyFactory factory){
-           PBEKeySpec spec = new PBEKeySpec(plainText.toCharArray(), secretKey.getBytes(), 65536, 128);
+
+    public static String encrypt(String plainText, SecretKeyFactory factory) {
+        PBEKeySpec spec = new PBEKeySpec(plainText.toCharArray(), secretKey.getBytes(), 65536, 128);
         try {
             var password = factory.generateSecret(spec).getEncoded();
-           return Base64.getEncoder().encodeToString(password);
+            return Base64.getEncoder().encodeToString(password);
 
         } catch (InvalidKeySpecException ex) {
             Logger.getLogger(NewClass.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null; 
-          
-           
+        return null;
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -352,6 +358,4 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
-
 }
-

@@ -251,7 +251,7 @@
             <StringItem index="1" value="Manager"/>
             <StringItem index="2" value="Accountant"/>
             <StringItem index="3" value="Marketer"/>
-            <StringItem index="4" value="Seceretary"/>
+            <StringItem index="4" value="Secretary"/>
           </StringArray>
         </Property>
       </Properties>
