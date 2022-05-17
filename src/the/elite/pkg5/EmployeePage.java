@@ -449,7 +449,7 @@ public class EmployeePage extends javax.swing.JFrame {
       try{
       conn = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
         st = (Statement) conn.createStatement();
-        rs = st.executeQuery("select Username from users");
+        rs = st.executeQuery("select Username from emp");
         int log =1;
         while (rs.next()) {
             if (rs.getString(1).equals(Username)) {
@@ -464,11 +464,11 @@ public class EmployeePage extends javax.swing.JFrame {
            try {
             conn = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
             st = (Statement) conn.createStatement();
-            String query = "delete from users " + "where (Username ='" + Username + "')";
+            String query = "delete from emp " + "where (Username ='" + Username + "')";
             PreparedStatement st = conn.prepareStatement(query);
 
             st.execute();
-            JOptionPane.showMessageDialog(null, "User Successfuly Removed");
+            JOptionPane.showMessageDialog(null, "Employee Successfuly Removed");
         } catch (SQLException e) {
 
             JOptionPane.showMessageDialog(null, "Invalid Username");
