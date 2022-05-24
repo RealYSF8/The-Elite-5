@@ -20,31 +20,68 @@ public class AccountantPage extends javax.swing.JFrame {
     java.sql.Connection conn = null;
     ResultSet rs = null;
     Statement st;
+    java.sql.Connection conn1 = null;
+    ResultSet rs1 = null;
+    Statement st1;
+    java.sql.Connection conn2 = null;
+    ResultSet rs2 = null;
+    Statement st2;
+
+
     /**
      * Creates new form AccountantPage
      */
     public AccountantPage() {
+
         initComponents();
-        
 
-          try {
-                conn = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
-                st = (Statement) conn.createStatement();
-                rs = st.executeQuery("select sum(Payroll) from emp");
-                     rs.next();
-                
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
+            st = (Statement) conn.createStatement();
+            rs = st.executeQuery("select sum(Payroll) from emp");
+            rs.next();
 
-         //       st.execute();
-                          String sum = rs.getString(1);
-                            jTextArea1.setText(sum);
+            //       st.execute();
+            String sum = rs.getString(1);
+            jTextArea2.setText(sum);
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        jTextArea1.setEditable(false);
+
+        try {
+            conn1 = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
+            st1 = (Statement) conn1.createStatement();
+            rs1 = st1.executeQuery("select profit from profits");
+            rs1.next();
+
+            String old = rs1.getString(1);
+
+
+        } catch (SQLException e) {
+
+            JOptionPane.showMessageDialog(null, e);
 
         }
 
-        catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,e);
-        }
-          jTextArea1.setEditable(false);
 
+        try {
+
+            conn2 = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
+            st2 = (Statement) conn2.createStatement();
+            String query2 = "update `profits` set `profit` = ?";
+            PreparedStatement st2 = conn2.prepareStatement(query2);
+
+            st2.setString(1, "100");
+
+            st2.execute();
+
+        } catch (SQLException e) {
+
+            JOptionPane.showMessageDialog(null, e);
+
+        }
     }
 
     /**
@@ -104,7 +141,7 @@ public class AccountantPage extends javax.swing.JFrame {
 
         REVENUE.setText("REVENUE");
 
-        COSTS.setText("COSTS");
+        COSTS.setText("Total Costs");
 
         REVENUEFIELS.setColumns(20);
         REVENUEFIELS.setRows(5);
@@ -162,8 +199,8 @@ public class AccountantPage extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(101, 101, 101))
             .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(COSTS, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(COSTS, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(93, 93, 93))
@@ -212,7 +249,7 @@ public class AccountantPage extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
