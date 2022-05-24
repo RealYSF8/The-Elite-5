@@ -4,17 +4,47 @@
  */
 package the.elite.pkg5;
 
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author foad farahbod
  */
 public class AccountantPage extends javax.swing.JFrame {
 
+    java.sql.Connection conn = null;
+    ResultSet rs = null;
+    Statement st;
     /**
      * Creates new form AccountantPage
      */
     public AccountantPage() {
         initComponents();
+        
+
+          try {
+                conn = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
+                st = (Statement) conn.createStatement();
+                rs = st.executeQuery("select sum(Payroll) from emp");
+                     rs.next();
+                
+
+         //       st.execute();
+                          String sum = rs.getString(1);
+                            jTextArea1.setText(sum);
+
+        }
+
+        catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,e);
+        }
+          jTextArea1.setEditable(false);
+
     }
 
     /**
@@ -182,6 +212,7 @@ public class AccountantPage extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
