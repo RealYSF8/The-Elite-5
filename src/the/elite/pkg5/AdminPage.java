@@ -105,6 +105,11 @@ public class AdminPage extends javax.swing.JFrame {
 
         jRadioButtonMenuItem4.setSelected(true);
         jRadioButtonMenuItem4.setText("Delete Employee");
+        jRadioButtonMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jRadioButtonMenuItem4);
 
         jRadioButtonMenuItem6.setSelected(true);
@@ -153,23 +158,27 @@ public class AdminPage extends javax.swing.JFrame {
                         AddUser Info = new AddUser();
                         Info.setVisible(true);
                         this.dispose();
-        // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
 
     private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
-     
-                          EmployeePage Info = new EmployeePage();
+                        EmployeePage Info = new EmployeePage();
                         Info.setVisible(true);
                         this.dispose();
     }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
 
     private void jRadioButtonMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem3ActionPerformed
-        // TODO add your handling code here:
+                        // Delete User
     }//GEN-LAST:event_jRadioButtonMenuItem3ActionPerformed
 
     private void jRadioButtonMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButtonMenuItem6ActionPerformed
+
+    private void jRadioButtonMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem4ActionPerformed
+                        EmployeePage Info = new EmployeePage();
+                        Info.setVisible(true);
+                        this.dispose();
+    }//GEN-LAST:event_jRadioButtonMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments

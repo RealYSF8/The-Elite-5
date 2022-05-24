@@ -448,7 +448,7 @@ public class EmployeePage extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
-        String Username = jTextField6.getText();
+      String Username = jTextField6.getText();
       try{
       conn = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
         st = (Statement) conn.createStatement();
