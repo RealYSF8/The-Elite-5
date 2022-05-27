@@ -171,7 +171,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="COSTS">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Total Costs"/>
+        <Property name="text" type="java.lang.String" value="Marketing Costs"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -211,7 +211,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Total Payroll"/>
+        <Property name="text" type="java.lang.String" value="Employees Cost"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane3">

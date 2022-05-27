@@ -26,13 +26,23 @@ public class AccountantPage extends javax.swing.JFrame {
     java.sql.Connection conn2 = null;
     ResultSet rs2 = null;
     Statement st2;
-
+        java.sql.Connection conn4 = null;
+    ResultSet rs4 = null;
+    Statement st4;
+    String news1;
+    int old;
+    int news;
+    int total;
+    int sums;
+    int sums1;
 
     /**
      * Creates new form AccountantPage
      */
     public AccountantPage() {
-
+        int min = 100;
+        int max = 300;
+        int random_int = (int) Math.floor(Math.random() * (max - min + 1) + min);
         initComponents();
 
         try {
@@ -42,13 +52,17 @@ public class AccountantPage extends javax.swing.JFrame {
             rs.next();
 
             //       st.execute();
-            String sum = rs.getString(1);
-            jTextArea2.setText(sum);
+            int sum = rs.getInt(1);
+            String sums = Integer.toString(sum);
+            jTextArea2.setText(sums);
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
         jTextArea1.setEditable(false);
+        jTextArea2.setEditable(false);
+        REVENUEFIELS.setEditable(false);
+        COSTFIELD.setEditable(false);
 
         try {
             conn1 = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
@@ -56,25 +70,25 @@ public class AccountantPage extends javax.swing.JFrame {
             rs1 = st1.executeQuery("select profit from profits");
             rs1.next();
 
-            String old = rs1.getString(1);
-
-
+            //  int old = rs1.getInt(1);
         } catch (SQLException e) {
 
             JOptionPane.showMessageDialog(null, e);
 
         }
 
-
         try {
 
             conn2 = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
             st2 = (Statement) conn2.createStatement();
-            String query2 = "update `profits` set `profit` = ?";
+            String query2 = "update `profits` set `profit` = ? WHERE ID = 1";
             PreparedStatement st2 = conn2.prepareStatement(query2);
+            int old = rs1.getInt(1);
 
-            st2.setString(1, "100");
-
+            int news = old + random_int;
+            String news1 = Integer.toString(news);
+            st2.setInt(1, news);
+            REVENUEFIELS.setText(news1);
             st2.execute();
 
         } catch (SQLException e) {
@@ -82,7 +96,37 @@ public class AccountantPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
 
         }
-    }
+        
+        
+          try {
+            conn4 = DriverManager.getConnection("jdbc:mysql://sql4.freemysqlhosting.net/sql4491164", "sql4491164", "EkkGxeCeUH");
+            st4 = (Statement) conn4.createStatement();
+            rs4 = st4.executeQuery("select sum(amount) from marketing");
+            rs4.next();
+
+            //       st.execute();
+            int sum1 = rs4.getInt(1);
+            String sums1 = Integer.toString(sum1);
+            jTextArea1.setText(sums1);
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        int totals1 = Integer.parseInt(jTextArea1.getText());
+        int totals2 = Integer.parseInt(jTextArea2.getText());
+        int totals3 = Integer.parseInt(REVENUEFIELS.getText());
+        int costs = totals1 + totals2;
+        int profit = totals3 - costs;
+                System.out.println(costs);
+
+         String sums5 = Integer.toString(profit);
+
+        COSTFIELD.setText(sums5);
+        
+        
+    
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -141,7 +185,7 @@ public class AccountantPage extends javax.swing.JFrame {
 
         REVENUE.setText("REVENUE");
 
-        COSTS.setText("Total Costs");
+        COSTS.setText("Marketing Costs");
 
         REVENUEFIELS.setColumns(20);
         REVENUEFIELS.setRows(5);
@@ -153,7 +197,7 @@ public class AccountantPage extends javax.swing.JFrame {
 
         jLabel2.setText("PROFIT");
 
-        jLabel3.setText("Total Payroll");
+        jLabel3.setText("Employees Cost");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
