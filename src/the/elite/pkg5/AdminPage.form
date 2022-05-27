@@ -20,46 +20,19 @@
             <Property name="text" type="java.lang.String" value="File"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JRadioButtonMenuItem" name="jRadioButtonMenuItem1">
-              <Properties>
-                <Property name="selected" type="boolean" value="true"/>
-                <Property name="text" type="java.lang.String" value="Add User"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonMenuItem1ActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JRadioButtonMenuItem" name="jRadioButtonMenuItem2">
               <Properties>
                 <Property name="selected" type="boolean" value="true"/>
-                <Property name="text" type="java.lang.String" value="Add Employee"/>
+                <Property name="text" type="java.lang.String" value="Manage Employees"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonMenuItem2ActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JRadioButtonMenuItem" name="jRadioButtonMenuItem3">
-              <Properties>
-                <Property name="selected" type="boolean" value="true"/>
-                <Property name="text" type="java.lang.String" value="Delete User"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonMenuItem3ActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JRadioButtonMenuItem" name="jRadioButtonMenuItem4">
-              <Properties>
-                <Property name="selected" type="boolean" value="true"/>
-                <Property name="text" type="java.lang.String" value="Delete Employee"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonMenuItem4ActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JRadioButtonMenuItem" name="jRadioButtonMenuItem6">
               <Properties>
                 <Property name="selected" type="boolean" value="true"/>
-                <Property name="text" type="java.lang.String" value="View Revenue"/>
+                <Property name="text" type="java.lang.String" value="Manage Secretary"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonMenuItem6ActionPerformed"/>
@@ -68,8 +41,38 @@
             <MenuItem class="javax.swing.JRadioButtonMenuItem" name="jRadioButtonMenuItem7">
               <Properties>
                 <Property name="selected" type="boolean" value="true"/>
-                <Property name="text" type="java.lang.String" value="View Costs"/>
+                <Property name="text" type="java.lang.String" value="Manage Marketing"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonMenuItem7ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JRadioButtonMenuItem" name="jRadioButtonMenuItem8">
+              <Properties>
+                <Property name="selected" type="boolean" value="true"/>
+                <Property name="text" type="java.lang.String" value="Manage Departments"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonMenuItem8ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JRadioButtonMenuItem" name="jRadioButtonMenuItem10">
+              <Properties>
+                <Property name="selected" type="boolean" value="true"/>
+                <Property name="text" type="java.lang.String" value="Manage Accountant"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonMenuItem10ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JRadioButtonMenuItem" name="jRadioButtonMenuItem9">
+              <Properties>
+                <Property name="selected" type="boolean" value="true"/>
+                <Property name="text" type="java.lang.String" value="Log Out"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonMenuItem9ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
