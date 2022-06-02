@@ -430,7 +430,7 @@ public class ManagerPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // Edit Status
+     // Edit Status
         
         String taskID = jTextField5.getText();
         String newStatus = jComboBox1.getSelectedItem().toString();

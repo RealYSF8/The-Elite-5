@@ -5,11 +5,6 @@
 package the.elite.pkg5;
 
 import java.security.SecureRandom;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
-import java.sql.Statement;
-import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 
 import java.security.NoSuchAlgorithmException;
@@ -250,7 +245,7 @@ public class AddUser extends javax.swing.JFrame {
                 st.execute();
                 JOptionPane.showMessageDialog(null,"User Successfuly Created");
             
-    }
+        }
 
     catch (SQLException e) {
 
