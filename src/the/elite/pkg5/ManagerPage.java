@@ -277,6 +277,11 @@ public class ManagerPage extends javax.swing.JFrame {
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("Manage Payrolls");
+        jRadioButtonMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jRadioButtonMenuItem1);
 
         jRadioButtonMenuItem3.setSelected(true);
@@ -478,6 +483,10 @@ public class ManagerPage extends javax.swing.JFrame {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments

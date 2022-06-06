@@ -153,9 +153,7 @@ public class AccountantPage extends javax.swing.JFrame {
         jTextArea2 = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -213,12 +211,8 @@ public class AccountantPage extends javax.swing.JFrame {
 
         jMenu1.setText("File");
 
-        jRadioButtonMenuItem1.setSelected(true);
-        jRadioButtonMenuItem1.setText("View Revenue");
-        jMenu1.add(jRadioButtonMenuItem1);
-
         jRadioButtonMenuItem2.setSelected(true);
-        jRadioButtonMenuItem2.setText("View Costs");
+        jRadioButtonMenuItem2.setText("Log Out");
         jRadioButtonMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonMenuItem2ActionPerformed(evt);
@@ -227,9 +221,6 @@ public class AccountantPage extends javax.swing.JFrame {
         jMenu1.add(jRadioButtonMenuItem2);
 
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -288,7 +279,8 @@ public class AccountantPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
-        // TODO add your handling code here:
+      login Info = new login();
+        Info.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
 
     /**
@@ -336,10 +328,8 @@ public class AccountantPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

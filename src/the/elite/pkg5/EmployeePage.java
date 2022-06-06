@@ -75,7 +75,6 @@ public class EmployeePage extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
         jRadioButtonMenuItem3 = new javax.swing.JRadioButtonMenuItem();
         jRadioButtonMenuItem4 = new javax.swing.JRadioButtonMenuItem();
@@ -184,15 +183,6 @@ public class EmployeePage extends javax.swing.JFrame {
 
         jMenu1.setText("File");
 
-        jRadioButtonMenuItem1.setSelected(true);
-        jRadioButtonMenuItem1.setText("Employee Page");
-        jRadioButtonMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jRadioButtonMenuItem1);
-
         jRadioButtonMenuItem2.setSelected(true);
         jRadioButtonMenuItem2.setText("Add User");
         jRadioButtonMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -204,10 +194,20 @@ public class EmployeePage extends javax.swing.JFrame {
 
         jRadioButtonMenuItem3.setSelected(true);
         jRadioButtonMenuItem3.setText("Add Department");
+        jRadioButtonMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jRadioButtonMenuItem3);
 
         jRadioButtonMenuItem4.setSelected(true);
         jRadioButtonMenuItem4.setText("Log Out");
+        jRadioButtonMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jRadioButtonMenuItem4);
 
         jMenuBar1.add(jMenu1);
@@ -346,12 +346,9 @@ public class EmployeePage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
-
     private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
-        // TODO add your handling code here:
+          AddUser Info = new AddUser();
+        Info.setVisible(true);    // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -488,6 +485,16 @@ public class EmployeePage extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jRadioButtonMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem3ActionPerformed
+             Departments Info = new Departments();
+        Info.setVisible(true); // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonMenuItem3ActionPerformed
+
+    private void jRadioButtonMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem4ActionPerformed
+     login Info = new login();
+        Info.setVisible(true);   // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonMenuItem4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -555,7 +562,6 @@ public class EmployeePage extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem4;
