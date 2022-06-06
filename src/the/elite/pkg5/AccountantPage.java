@@ -173,7 +173,7 @@ public class AccountantPage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addComponent(jLabel1)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,24 +187,26 @@ public class AccountantPage extends javax.swing.JFrame {
 
         COSTS.setText("Marketing Costs");
 
-        REVENUEFIELS.setColumns(20);
-        REVENUEFIELS.setRows(5);
+        REVENUEFIELS.setColumns(10);
+        REVENUEFIELS.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        REVENUEFIELS.setRows(2);
+        REVENUEFIELS.setTabSize(9);
         jScrollPane1.setViewportView(REVENUEFIELS);
 
-        COSTFIELD.setColumns(20);
-        COSTFIELD.setRows(5);
+        COSTFIELD.setColumns(10);
+        COSTFIELD.setRows(2);
         jScrollPane2.setViewportView(COSTFIELD);
 
         jLabel2.setText("PROFIT");
 
         jLabel3.setText("Employees Cost");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
+        jTextArea1.setColumns(10);
+        jTextArea1.setRows(2);
         jScrollPane3.setViewportView(jTextArea1);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
+        jTextArea2.setColumns(10);
+        jTextArea2.setRows(2);
         jScrollPane4.setViewportView(jTextArea2);
 
         jMenuBar1.setPreferredSize(new java.awt.Dimension(69, 33));
@@ -251,8 +253,8 @@ public class AccountantPage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
@@ -268,9 +270,9 @@ public class AccountantPage extends javax.swing.JFrame {
                     .addComponent(REVENUE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(COSTS)
